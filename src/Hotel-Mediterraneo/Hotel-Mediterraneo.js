@@ -148,15 +148,37 @@ function HotelMediterraneo() {
             <input className="Input-Precio" type="number" />
             <h5 style={{ marginLeft: "10px" }}>Sillas</h5>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <input className="Input-Precio" type="checkbox" />
-            <h5 style={{ marginLeft: "10px" }}>Decoración</h5>
-          </div>
+          <>
+            <div className="checkbox-wrapper">
+              <input id="terms-checkbox-37" name="checkbox" type="checkbox" />
+              <label className="terms-label" htmlFor="terms-checkbox-37">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 200 200"
+                  className="checkbox-svg"
+                >
+                  <mask fill="white" id="path-1-inside-1_476_5-37">
+                    <rect height={200} width={200} />
+                  </mask>
+                  <rect
+                    mask="url(#path-1-inside-1_476_5-37)"
+                    strokeWidth={40}
+                    className="checkbox-box"
+                    height={200}
+                    width={200}
+                  />
+                  <path
+                    strokeWidth={15}
+                    d="M52 111.018L76.9867 136L149 64"
+                    className="checkbox-tick"
+                  />
+                </svg>
+                <h5 style={{ marginLeft: "10px" }}>Comida</h5>
+                </label>
+            </div>
+          </>
+
           <div
             style={{
               display: "flex",
@@ -170,10 +192,7 @@ function HotelMediterraneo() {
       </div>
 
       <div className="Summit-and-budget">
-        <div
-          className="Budget"
-          style={{ padding: "10px" }}
-        >
+        <div className="Budget" style={{ padding: "10px" }}>
           <p id="Texto-Budget">Total Presupuesto: ${totalBudget}</p>
         </div>
         <div className="Boton">
