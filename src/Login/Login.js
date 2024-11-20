@@ -51,6 +51,7 @@ export function Login() {
 
       // Redirigir a la página principal (raíz de la aplicación)
       navigate("/"); // Redirige al home de tu app (http://localhost:3000/)
+      window.location.reload(); // Recarga la página actual
     } catch (error) {
       console.log("Error al enviar los datos", error);
       alert("Surgió un error, intente de nuevo");
@@ -74,7 +75,20 @@ export function Login() {
       if (user) {
         // Si se encuentra un usuario con los datos correctos
         alert("Bienvenido");
+
+        // Guardar en localStorage al iniciar sesión
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password); // Aquí guardamos la contraseña, aunque no es recomendable hacerlo
+        
+        // Cambiar registrationStatus a 1 al iniciar sesión
+        localStorage.setItem("registrationStatus", "1");
+
+        // Actualizar el estado de isRegistered a 1
+        setIsRegistered(true);
+
         navigate("/"); // Redirigir al usuario a App.js
+        window.location.reload(); // Recarga la página actual
+
       } else {
         // Si no se encuentra un usuario con los datos correctos
         alert("Datos erróneos");

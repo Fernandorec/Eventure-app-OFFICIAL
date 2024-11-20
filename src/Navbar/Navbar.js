@@ -1,10 +1,18 @@
-// src/components/Navbar/Navbar.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar({ registrationStatus, handleLogout }) {
   const navigate = useNavigate();
+
+  // Esta función se ejecutará cuando el usuario haga clic en "Cerrar sesión"
+  const handleLogoutAndReload = () => {
+    // Llamas a la función handleLogout (que debería hacer el logout real)
+    handleLogout();
+    
+    // Luego recargas la página
+    window.location.reload();
+  };
 
   return (
     <header id="AllBanner">
@@ -47,7 +55,7 @@ function Navbar({ registrationStatus, handleLogout }) {
                   <button
                     className="nav-link"
                     style={{ color: "white", backgroundColor: "transparent", border: "none" }}
-                    onClick={handleLogout}
+                    onClick={handleLogoutAndReload} // Llamas a handleLogoutAndReload
                   >
                     Cerrar sesión
                   </button>
