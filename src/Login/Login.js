@@ -41,60 +41,68 @@ export function Login() {
   // Función para manejar el registro de usuario
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Validación de formato de correo electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+  
+    // Validación de contraseña
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      alert(
+        "La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial."
+      );
+      return;
+    }
+  
     try {
       // Verificar si el usuario ya existe
       const response = await axios.get(
         "https://api.sheetbest.com/sheets/2c7ca1f5-8079-4cd7-beca-6ac336a853d4"
       );
       const users = response.data;
-
+  
       const userExists = users.some((user) => user.email === email);
-
+  
       if (userExists) {
         alert("El usuario ya está registrado");
       } else {
         // Generar ID único
-        const generateId = () => {
-          const chars = "abcdefghijklmnopqrstuvwxyz";
-          let id = "";
-          for (let i = 0; i < 5; i++) {
-            id += chars.charAt(Math.floor(Math.random() * chars.length));
-          }
-          return id;
-        };
-
-        const id = generateId(); // Generar el ID de 5 letras minúsculas
-
+        const id = generateId();
+  
         // Registrar al usuario en la base de datos
         await axios.post(
           "https://api.sheetbest.com/sheets/2c7ca1f5-8079-4cd7-beca-6ac336a853d4",
           {
-            id: id,
-            name: name,
-            email: email,
-            password: password,
-            personas_asistir: 0, // Inicializar a 0
-            mesas_rentadas: 0, // Inicializar a 0
-            sillas_rentadas: 0, // Inicializar a 0
-            decoracion: 0, // Inicializar a 0
-            comida: 0, // Inicializar a 0
-            total_pagar: 0, // Inicializar a 0
+            id,
+            name,
+            email,
+            password,
+            personas_asistir: 0,
+            mesas_rentadas: 0,
+            sillas_rentadas: 0,
+            decoracion: 0,
+            comida: 0,
+            total_pagar: 0,
           }
         );
-
+  
         alert("Registro exitoso");
-
+  
         // Guardar en localStorage
         localStorage.setItem("id", id);
         localStorage.setItem("registrationStatus", "1");
-
+  
         // Resetear estados
         setIsRegistered(true);
         setName("");
         setEmail("");
         setPassword("");
-
+  
         // Redirigir al usuario a la página principal
         navigate("/");
         window.location.reload();
@@ -105,6 +113,7 @@ export function Login() {
     }
   };
   
+
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -253,7 +262,7 @@ export function Login() {
                   padding: "10px 10px 10px 40px",
                   borderRadius: "10px",
                   border: "1px solid #ccc",
-                  backgroundImage: `url(${usuarioImg})`,
+                  backgroundImage: `url(${emailImg})`,
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "10px center",
                   backgroundSize: "20px",
@@ -442,13 +451,19 @@ export function Login() {
               ? "Estás listo para explorar más diseños y organizar tu evento."
               : "Regístrate para encontrar más diseños y poder tener un evento más organizado."}
           </p>
-          <div
-            className="Boton"
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <button className="Subir-Boton" onClick={handleLoginClick}>
-              {isLoggedIn ? "Registrarse" : "Iniciar sesion"}
-            </button>
+          <div id="Divboton">
+            <div
+              className="Boton"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <button className="Subir-Boton" onClick={handleLoginClick}>
+                {isLoggedIn ? "Registrarse" : "Iniciar sesion"}
+              </button>
+            </div>
           </div>
         </section>
       </div>

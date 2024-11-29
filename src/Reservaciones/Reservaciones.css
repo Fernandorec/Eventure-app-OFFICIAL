@@ -118,3 +118,11 @@ then set the desired styles for .card-img. */
 .Titulo{
   font-size: 30px;
 }
+
+#NoRegistros{
+text-align: center;
+width: 2000px;
+margin-top: 100px;
+font-family: poppins;
+font-style: italic;
+}

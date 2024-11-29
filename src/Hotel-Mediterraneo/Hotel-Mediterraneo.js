@@ -344,7 +344,7 @@ function HotelMediterraneo() {
           <h3 className="Texto-Budget">Total a pagar: ${totalBudget}</h3>
         </div>
         <div>
-          <div className="Boton">
+          <div className="Botonn">
             <button className="Subir-Boton" onClick={reservar}>
               <span className="circle1" />
               <span className="circle2" />

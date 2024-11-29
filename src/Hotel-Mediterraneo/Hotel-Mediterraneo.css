@@ -43,7 +43,7 @@
     margin-right: 10px; /* Añadir margen a la derecha para separar el presupuesto del botón */
 }
 
-.Boton {
+.Botonn {
     display: flex; /* Asegúrate de que el botón esté centrado dentro de su contenedor */
     margin-left: 240px;
 }

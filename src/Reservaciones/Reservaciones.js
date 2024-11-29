@@ -113,8 +113,8 @@ function Reservaciones() {
             </div>
           ))
         ) : (
-          <h3 style={{ color: "#250a58" }}>
-            No hay reservaciones disponibles.
+          <h3 id="NoRegistros" style={{ color: "#250a58" }}>
+            No hay reservaciones disponibles
             <br></br>
             <br></br>
             <br></br>
@@ -124,9 +124,7 @@ function Reservaciones() {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+
 
           </h3>
           
